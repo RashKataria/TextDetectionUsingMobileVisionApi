@@ -2,5 +2,7 @@
     <string name="app_name">Simple OCR</string>
     <string name="txt_message">No Text Available</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="launch_scanner">Launch Scanner</string>
+    <string name="scan_dni">Scan for Other</string>
 
 </resources>

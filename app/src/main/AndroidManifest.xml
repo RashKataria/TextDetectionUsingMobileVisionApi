@@ -11,15 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanItensActivity">
+        <activity android:name=".ScanItemsActivity">
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NewScreenActivity" />
+        <activity android:name=".NewFirstScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".NewScreenActivity" />
+        <activity android:name=".NewOpenScanActivity" />
 
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="ocr"/>
 

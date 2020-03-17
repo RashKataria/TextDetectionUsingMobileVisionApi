@@ -7,6 +7,12 @@
     android:weightSum="5"
     tools:context="com.tuts.prakash.simpleocr.MainActivity">
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
+
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"

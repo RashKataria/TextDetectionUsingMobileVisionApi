@@ -26,7 +26,7 @@ import java.util.List;
  * @author Rashmi Kataria
  * 3/13/2020
  */
-public class ScanItensActivity extends AppCompatActivity {
+public class ScanItemsActivity extends AppCompatActivity {
     SurfaceView mCameraView;
     TextView mTextView;
     CameraSource mCameraSource;
@@ -47,11 +47,12 @@ public class ScanItensActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode != requestPermissionID) {
+        if (requestCode != RESULT_OK) {
             Log.d(TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             return;
         }
+
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             try {
@@ -94,7 +95,7 @@ public class ScanItensActivity extends AppCompatActivity {
                         if (ActivityCompat.checkSelfPermission(getApplicationContext(),
                                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
-                            ActivityCompat.requestPermissions(ScanItensActivity.this,
+                            ActivityCompat.requestPermissions(ScanItemsActivity.this,
                                     new String[]{Manifest.permission.CAMERA},
                                     requestPermissionID);
                             return;
@@ -142,7 +143,7 @@ public class ScanItensActivity extends AppCompatActivity {
                                         Log.d("OcrDetectorProcessor", "Text detected! " + item.getValue());
 
 
-                                        if (matchedWords.size() == 2) {
+                                        if (matchedWords.size() == 1) {
                                             moveToDashboard(matchedWords);
                                             return;
                                         }
@@ -155,9 +156,10 @@ public class ScanItensActivity extends AppCompatActivity {
                                                 }
                                             }
                                             matchedWords.add(matchedString);
-                                        } else if (matchedString.toLowerCase().equals("dni")) {
-                                            matchedWords.add(matchedString);
                                         }
+//                                        else if (matchedString.toLowerCase().equals("dni")) {
+//                                            matchedWords.add(matchedString);
+//                                        }
 
                                         stringBuilder.append(item.getValue());
                                         stringBuilder.append("\n");
@@ -194,8 +196,8 @@ public class ScanItensActivity extends AppCompatActivity {
     private void moveToDashboard(List<String> matchedString) {
         Bundle bundle = new Bundle();
         bundle.putString("Entrega", matchedString.get(0));
-        bundle.putString("DNI", matchedString.get(1));
-        Intent intent = new Intent(ScanItensActivity.this, NewScreenActivity.class);
+//        bundle.putString("DNI", matchedString.get(1));
+        Intent intent = new Intent(ScanItemsActivity.this, NewFirstScreenActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
 
